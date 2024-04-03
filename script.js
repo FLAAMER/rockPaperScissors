@@ -9,12 +9,14 @@ function getComputerChoice() {
     // Convert into a string using []
     // Multiply with choices variable
     let compChoice = choices[Math.floor(Math.random() * choices.length)];
-    console.log(compChoice)
+    console.log(`The computer chose ${compChoice}`)
     return compChoice;
 }
 
 // Create function that plays a single round of rockPaperScissors
 // Must have two parameters playerSelection and computerSelection
+// Must return a string that declares win, lose or tie
+// Parameters should be case insensitive
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toLowerCase () === "rock" && computerSelection === "paper") { 
         return "You Lose! Paper beats Rock"
@@ -33,9 +35,21 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "SCIssorS";
-const computerSelection = getComputerChoice();
-console.log(computerSelection)
-console.log(playRound(playerSelection, computerSelection));
-// Must return a string that declares win, lose or tie
-// Parameters should be case insensitive
+// Create function that asks player for choice with prompt
+// Return player's choice
+function playerSelect() {
+    let playerSelection = prompt("Type in your choice")
+    return playerSelection;
+}
+
+// Create function that plays five rounds
+function playGame() {
+    console.log(playRound(playerSelect(), getComputerChoice()))
+    console.log(playRound(playerSelect(), getComputerChoice()))
+    console.log(playRound(playerSelect(), getComputerChoice()))
+    console.log(playRound(playerSelect(), getComputerChoice()))
+    console.log(playRound(playerSelect(), getComputerChoice()))
+}
+
+// Invoke the function to play five rounds
+playGame()
