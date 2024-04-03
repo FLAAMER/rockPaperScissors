@@ -9,7 +9,33 @@ function getComputerChoice() {
     // Convert into a string using []
     // Multiply with choices variable
     let compChoice = choices[Math.floor(Math.random() * choices.length)];
+    console.log(compChoice)
     return compChoice;
 }
 
-console.log(getComputerChoice())
+// Create function that plays a single round of rockPaperScissors
+// Must have two parameters playerSelection and computerSelection
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection.toLowerCase () === "rock" && computerSelection === "paper") { 
+        return "You Lose! Paper beats Rock"
+    } else if (playerSelection.toLowerCase () === "rock" && computerSelection === "scissors") { 
+        return "You Win! Rock beats Scissors"
+    } else if (playerSelection.toLowerCase () === "paper" && computerSelection === "rock") { 
+        return "You Win! Paper beats Rock"
+    } else if (playerSelection.toLowerCase () === "paper" && computerSelection === "scissors") { 
+        return "You Lose! Scissors beat Paper"
+    } else if (playerSelection.toLowerCase () === "scissors" && computerSelection === "rock") { 
+        return "You Lose! Rock beats Scissors"
+    } else if (playerSelection.toLowerCase () === "scissors" && computerSelection === "paper") { 
+        return "You Win! Scissors beat Paper"
+    } else if (playerSelection.toLowerCase () === computerSelection) {
+        return "You tie!"
+    }
+}
+
+const playerSelection = "SCIssorS";
+const computerSelection = getComputerChoice();
+console.log(computerSelection)
+console.log(playRound(playerSelection, computerSelection));
+// Must return a string that declares win, lose or tie
+// Parameters should be case insensitive
