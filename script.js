@@ -42,14 +42,46 @@ function playerSelect() {
     return playerSelection;
 }
 
-// Create function that plays five rounds
-function playGame() {
-    console.log(playRound(playerSelect(), getComputerChoice()))
-    console.log(playRound(playerSelect(), getComputerChoice()))
-    console.log(playRound(playerSelect(), getComputerChoice()))
-    console.log(playRound(playerSelect(), getComputerChoice()))
-    console.log(playRound(playerSelect(), getComputerChoice()))
-}
+// Declare variable to keep track of final score of the player
+let playerScore = 0;
+// Declare variable to keep track of final score of computer
+let computerScore = 0;
 
-// Invoke the function to play five rounds
-playGame()
+// Create function that plays one round and keeps tracks of scores
+function scoreDetermine() {
+    // Declare variable to compare outcomes for determining score
+    let outcome = playRound(playerSelect(), getComputerChoice());
+    // Use if else statements to determine scores
+    if (outcome === "You tie!") {
+        console.log(`${outcome}`)
+        console.log("No points awarded to any party")
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+    } else if (outcome === "You Lose! Paper beats Rock") {
+        console.log(`${outcome}`)
+        // If the computer wins increment computerScore
+        computerScore = ++computerScore
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+    } else if (outcome === "You Win! Rock beats Scissors") {
+        console.log(`${outcome}`)
+        // If the player wins increment playerScore
+        playerScore = ++playerScore
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+    } else if (outcome === "You Win! Paper beats Rock") {
+        console.log(`${outcome}`)
+        playerScore = ++playerScore
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        playerFinalscore = playerNewScore
+    } else if (outcome === "You Lose! Scissors beat Paper") {
+        console.log(`${outcome}`)
+        computerScore = ++computerScore
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+    } else if (outcome === "You Lose! Rock beats Scissors") {
+        console.log(`${outcome}`)
+        computerScore = ++computerScore
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+    } else if (outcome === "You Win! Scissors beat Paper") {
+        console.log(`${outcome}`)
+        playerScore = ++playerScore
+        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+    }
+}
