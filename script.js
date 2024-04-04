@@ -85,3 +85,28 @@ function scoreDetermine() {
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
     }
 }
+
+// Create function that plays five rounds
+function playGame() {
+    // Invoke the function to determine the score five times
+    scoreDetermine()
+    scoreDetermine()
+    scoreDetermine()
+    scoreDetermine()
+    scoreDetermine()
+    // Create an if else statement to display the final result
+    if ((playerScore - computerScore) > 1) {
+        console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} points`)
+    } else if ((computerScore - playerScore > 1)) {
+        console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} points`)
+    } else if (playerScore === computerScore) {
+        console.log("FINAL RESULT : YOU TIE!")
+    } else if (playerScore > computerScore) {
+        console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} point`)
+    } else if (playerScore < computerScore) {
+        console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} point`)
+    }
+}
+
+// Invoke the function that plays five rounds
+playGame()
