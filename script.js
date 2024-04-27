@@ -95,12 +95,7 @@ function numberOfRounds(number) {
 // Create function that plays five rounds
 function playGame() {
     // Invoke the function to determine the score five times
-    // scoreDetermine()
-    // scoreDetermine()
-    // scoreDetermine()
-    // scoreDetermine()
-    // scoreDetermine()
-    numberOfRounds(5)
+    // numberOfRounds(5)
     // Create an if else statement to display the final result
     if ((playerScore - computerScore) > 1) {
         console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} points`)
