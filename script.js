@@ -19,17 +19,17 @@ function getComputerChoice() {
 // Parameters should be case insensitive
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toLowerCase () === "rock" && computerSelection === "paper") { 
-        return "You Lose! Paper beats Rock"
+        return "You Lose! Paper covers Rock"
     } else if (playerSelection.toLowerCase () === "rock" && computerSelection === "scissors") { 
-        return "You Win! Rock beats Scissors"
+        return "You Win! Rock breaks Scissors"
     } else if (playerSelection.toLowerCase () === "paper" && computerSelection === "rock") { 
-        return "You Win! Paper beats Rock"
+        return "You Win! Paper covers Rock"
     } else if (playerSelection.toLowerCase () === "paper" && computerSelection === "scissors") { 
-        return "You Lose! Scissors beat Paper"
+        return "You Lose! Scissors cut Paper"
     } else if (playerSelection.toLowerCase () === "scissors" && computerSelection === "rock") { 
-        return "You Lose! Rock beats Scissors"
+        return "You Lose! Rock breaks Scissors"
     } else if (playerSelection.toLowerCase () === "scissors" && computerSelection === "paper") { 
-        return "You Win! Scissors beat Paper"
+        return "You Win! Scissors cut Paper"
     } else if (playerSelection.toLowerCase () === computerSelection) {
         return "You tie!"
     }
@@ -56,44 +56,51 @@ function scoreDetermine() {
         console.log(`${outcome}`)
         console.log("No points awarded to any party")
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
-    } else if (outcome === "You Lose! Paper beats Rock") {
+    } else if (outcome === "You Lose! Paper covers Rock") {
         console.log(`${outcome}`)
         // If the computer wins increment computerScore
         computerScore = ++computerScore
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
-    } else if (outcome === "You Win! Rock beats Scissors") {
+    } else if (outcome === "You Win! Rock breaks Scissors") {
         console.log(`${outcome}`)
         // If the player wins increment playerScore
         playerScore = ++playerScore
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
-    } else if (outcome === "You Win! Paper beats Rock") {
+    } else if (outcome === "You Win! Paper covers Rock") {
         console.log(`${outcome}`)
         playerScore = ++playerScore
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
-        playerFinalscore = playerNewScore
-    } else if (outcome === "You Lose! Scissors beat Paper") {
+    } else if (outcome === "You Lose! Scissors cut Paper") {
         console.log(`${outcome}`)
         computerScore = ++computerScore
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
-    } else if (outcome === "You Lose! Rock beats Scissors") {
+    } else if (outcome === "You Lose! Rock breaks Scissors") {
         console.log(`${outcome}`)
         computerScore = ++computerScore
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
-    } else if (outcome === "You Win! Scissors beat Paper") {
+    } else if (outcome === "You Win! Scissors cut Paper") {
         console.log(`${outcome}`)
         playerScore = ++playerScore
         console.log(`You : ${playerScore} || Computer : ${computerScore}`)
     }
 }
 
+function numberOfRounds(number) {
+    for (let i = 0; i < number; i++) {
+        scoreDetermine();
+        
+    }
+}
+
 // Create function that plays five rounds
 function playGame() {
     // Invoke the function to determine the score five times
-    scoreDetermine()
-    scoreDetermine()
-    scoreDetermine()
-    scoreDetermine()
-    scoreDetermine()
+    // scoreDetermine()
+    // scoreDetermine()
+    // scoreDetermine()
+    // scoreDetermine()
+    // scoreDetermine()
+    numberOfRounds(5)
     // Create an if else statement to display the final result
     if ((playerScore - computerScore) > 1) {
         console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} points`)
