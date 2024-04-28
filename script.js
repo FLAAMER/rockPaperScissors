@@ -114,10 +114,17 @@ function numberOfRounds(number) {
 // playGame()
 
 // Store the three buttons in variables
-let rockButton = document.querySelector("#rock")
-let paperButton = document.querySelector("#paper")
-let scissorsButton = document.querySelector("#scissors")
+const rockButton = document.querySelector("#rock")
+const paperButton = document.querySelector("#paper")
+const scissorsButton = document.querySelector("#scissors")
 
+rockButton.addEventListener("click", () => console.log("You chose rock"))
 rockButton.addEventListener("click", () => scoreDetermine("rock"))
+
+paperButton.addEventListener("click", () => console.log("You chose paper"))
 paperButton.addEventListener("click", () => scoreDetermine("paper"))
+
+scissorsButton.addEventListener("click", () => console.log("You chose scissors"))
 scissorsButton.addEventListener("click", () => scoreDetermine("scissors"))
+
+const scoreDisplay = document.querySelector("div")
