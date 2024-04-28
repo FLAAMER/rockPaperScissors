@@ -18,19 +18,19 @@ function getComputerChoice() {
 // Must return a string that declares win, lose or tie
 // Parameters should be case insensitive
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.toLowerCase () === "rock" && computerSelection === "paper") { 
+    if (playerSelection.toLowerCase() === "rock" && computerSelection === "paper") { 
         return "You Lose! Paper covers Rock"
-    } else if (playerSelection.toLowerCase () === "rock" && computerSelection === "scissors") { 
+    } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") { 
         return "You Win! Rock breaks Scissors"
-    } else if (playerSelection.toLowerCase () === "paper" && computerSelection === "rock") { 
+    } else if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") { 
         return "You Win! Paper covers Rock"
-    } else if (playerSelection.toLowerCase () === "paper" && computerSelection === "scissors") { 
+    } else if (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") { 
         return "You Lose! Scissors cut Paper"
-    } else if (playerSelection.toLowerCase () === "scissors" && computerSelection === "rock") { 
+    } else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock") { 
         return "You Lose! Rock breaks Scissors"
-    } else if (playerSelection.toLowerCase () === "scissors" && computerSelection === "paper") { 
+    } else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") { 
         return "You Win! Scissors cut Paper"
-    } else if (playerSelection.toLowerCase () === computerSelection) {
+    } else if (playerSelection.toLowerCase() === computerSelection) {
         return "You tie!"
     }
 }
@@ -48,9 +48,9 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Create function that plays one round and keeps tracks of scores
-function scoreDetermine() {
+function scoreDetermine(playerChoice) {
     // Declare variable to compare outcomes for determining score
-    let outcome = playRound(playerSelect(), getComputerChoice());
+    let outcome = playRound(playerChoice, getComputerChoice());
     // Use if else statements to determine scores
     if (outcome === "You tie!") {
         console.log(`${outcome}`)
@@ -92,23 +92,32 @@ function numberOfRounds(number) {
     }
 }
 
-// Create function that plays five rounds
-function playGame() {
-    // Invoke the function to determine the score five times
-    // numberOfRounds(5)
-    // Create an if else statement to display the final result
-    if ((playerScore - computerScore) > 1) {
-        console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} points`)
-    } else if ((computerScore - playerScore > 1)) {
-        console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} points`)
-    } else if (playerScore === computerScore) {
-        console.log("FINAL RESULT : YOU TIE!")
-    } else if (playerScore > computerScore) {
-        console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} point`)
-    } else if (playerScore < computerScore) {
-        console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} point`)
-    }
-}
+// // Create function that plays five rounds
+// function playGame() {
+//     // Invoke the function to determine the score five times
+//     // numberOfRounds(5)
+//     // Create an if else statement to display the final result
+//     if ((playerScore - computerScore) > 1) {
+//         console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} points`)
+//     } else if ((computerScore - playerScore > 1)) {
+//         console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} points`)
+//     } else if (playerScore === computerScore) {
+//         console.log("FINAL RESULT : YOU TIE!")
+//     } else if (playerScore > computerScore) {
+//         console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} point`)
+//     } else if (playerScore < computerScore) {
+//         console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} point`)
+//     }
+// }
 
 // Invoke the function that plays five rounds
-playGame()
+// playGame()
+
+// Store the three buttons in variables
+let rockButton = document.querySelector("#rock")
+let paperButton = document.querySelector("#paper")
+let scissorsButton = document.querySelector("#scissors")
+
+rockButton.addEventListener("click", () => scoreDetermine("rock"))
+paperButton.addEventListener("click", () => scoreDetermine("paper"))
+scissorsButton.addEventListener("click", () => scoreDetermine("scissors"))
