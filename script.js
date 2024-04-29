@@ -60,10 +60,21 @@ function scoreDetermine(playerChoice) {
         tieResultDisplay.textContent = "No points awarded to any party"
         scoreDisplay.appendChild(tieResultDisplay)
         currentScoreDisplay()
-    } else if (outcome === "You Lose! Paper covers Rock") {
+    } else if (outcome === "You Win! Scissors cut Paper" && playerScore === 4) {
         outcomeDisplay(outcome)
-        // If the computer wins increment computerScore
-        computerScore = ++computerScore
+        playerWinDeclaration()
+        playerScore = ++playerScore
+    } else if (outcome === "You Win! Rock breaks Scissors" && playerScore === 4) {
+        outcomeDisplay(outcome)
+        playerWinDeclaration()
+        playerScore = ++playerScore
+    } else if (outcome === "You Win! Paper covers Rock" && playerScore === 4) {
+        outcomeDisplay(outcome)
+        playerWinDeclaration()
+        playerScore = ++playerScore
+    } else if (outcome === "You Win! Scissors cut Paper") {
+        outcomeDisplay(outcome)
+        playerScore = ++playerScore
         currentScoreDisplay()
     } else if (outcome === "You Win! Rock breaks Scissors") {
         outcomeDisplay(outcome)
@@ -74,7 +85,19 @@ function scoreDetermine(playerChoice) {
         outcomeDisplay(outcome)
         playerScore = ++playerScore
         currentScoreDisplay()
-    } else if (outcome === "You Lose! Scissors cut Paper") {
+    } else if (outcome === "You Lose! Scissors cut Paper" && computerScore === 4) {
+        outcomeDisplay(outcome)
+        playerLoseDeclaration()
+        computerScore = ++computerScore
+    } else if (outcome === "You Lose! Rock breaks Scissors" && computerScore === 4) {
+        outcomeDisplay(outcome)
+        playerLoseDeclaration()
+        computerScore = ++computerScore
+    } else if (outcome === "You Lose! Paper covers Rock" && computerScore === 4) {
+        outcomeDisplay(outcome)
+        playerLoseDeclaration()
+        computerScore = ++computerScore
+    }  else if (outcome === "You Lose! Scissors cut Paper") {
         outcomeDisplay(outcome)
         computerScore = ++computerScore
         currentScoreDisplay()
@@ -82,39 +105,13 @@ function scoreDetermine(playerChoice) {
         outcomeDisplay(outcome)
         computerScore = ++computerScore
         currentScoreDisplay()
-    } else if (outcome === "You Win! Scissors cut Paper") {
+    } else if (outcome === "You Lose! Paper covers Rock") {
         outcomeDisplay(outcome)
-        playerScore = ++playerScore
+        // If the computer wins increment computerScore
+        computerScore = ++computerScore
         currentScoreDisplay()
-    }
+    } 
 }
-
-// function numberOfRounds(number) {
-//     for (let i = 0; i < number; i++) {
-//         scoreDetermine(); 
-//     }
-// }
-
-// // Create function that plays five rounds
-// function playGame() {
-//     // Invoke the function to determine the score five times
-//     // numberOfRounds(5)
-//     // Create an if else statement to display the final result
-//     if ((playerScore - computerScore) > 1) {
-//         console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} points`)
-//     } else if ((computerScore - playerScore > 1)) {
-//         console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} points`)
-//     } else if (playerScore === computerScore) {
-//         console.log("FINAL RESULT : YOU TIE!")
-//     } else if (playerScore > computerScore) {
-//         console.log(`FINAL RESULT : YOU WIN! by ${playerScore - computerScore} point`)
-//     } else if (playerScore < computerScore) {
-//         console.log(`FINAL RESULT : YOU LOSE! by ${computerScore - playerScore} point`)
-//     }
-// }
-
-// Invoke the function that plays five rounds
-// playGame()
 
 const scoreDisplay = document.querySelector("div")
 
@@ -161,4 +158,32 @@ function currentScoreDisplay() {
 
     const spacer = document.createElement("br")
     scoreDisplay.appendChild(spacer)
+}
+
+function playerWinDeclaration() {
+        const scoreDeclaration = document.createElement("div")
+        scoreDeclaration.textContent = "You have earned 5 points"
+        scoreDisplay.appendChild(scoreDeclaration);
+        
+        const announcement = document.createElement("div")
+        announcement.textContent = "The winner has been decided"
+        scoreDisplay.appendChild(announcement);
+
+        const congratulations = document.createElement("h1")
+        congratulations.textContent = "CONGRATULATIONS, YOU WON!!!"
+        scoreDisplay.appendChild(congratulations);   
+}
+
+function playerLoseDeclaration() {
+    const scoreDeclaration = document.createElement("div")
+    scoreDeclaration.textContent = "The computer has earned 5 points"
+    scoreDisplay.appendChild(scoreDeclaration);
+    
+    const announcement = document.createElement("div")
+    announcement.textContent = "The winner has been decided"
+    scoreDisplay.appendChild(announcement);
+
+    const congratulations = document.createElement("h1")
+    congratulations.textContent = "YOU LOST, BETTER LUCK NEXT TIME"
+    scoreDisplay.appendChild(congratulations);  
 }
