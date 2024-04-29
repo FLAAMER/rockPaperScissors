@@ -9,7 +9,9 @@ function getComputerChoice() {
     // Convert into a string using []
     // Multiply with choices variable
     let compChoice = choices[Math.floor(Math.random() * choices.length)];
-    console.log(`The computer chose ${compChoice}`)
+    const compChoiceDisplay = document.createElement("div")
+    compChoiceDisplay.textContent = `The computer chose ${compChoice}`
+    scoreDisplay.appendChild(compChoiceDisplay)
     return compChoice;
 }
 
@@ -53,44 +55,45 @@ function scoreDetermine(playerChoice) {
     let outcome = playRound(playerChoice, getComputerChoice());
     // Use if else statements to determine scores
     if (outcome === "You tie!") {
-        console.log(`${outcome}`)
-        console.log("No points awarded to any party")
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        outcomeDisplay(outcome)
+        const tieResultDisplay = document.createElement("div")
+        tieResultDisplay.textContent = "No points awarded to any party"
+        scoreDisplay.appendChild(tieResultDisplay)
+        currentScoreDisplay()
     } else if (outcome === "You Lose! Paper covers Rock") {
-        console.log(`${outcome}`)
+        outcomeDisplay(outcome)
         // If the computer wins increment computerScore
         computerScore = ++computerScore
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        currentScoreDisplay()
     } else if (outcome === "You Win! Rock breaks Scissors") {
-        console.log(`${outcome}`)
+        outcomeDisplay(outcome)
         // If the player wins increment playerScore
         playerScore = ++playerScore
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        currentScoreDisplay()
     } else if (outcome === "You Win! Paper covers Rock") {
-        console.log(`${outcome}`)
+        outcomeDisplay(outcome)
         playerScore = ++playerScore
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        currentScoreDisplay()
     } else if (outcome === "You Lose! Scissors cut Paper") {
-        console.log(`${outcome}`)
+        outcomeDisplay(outcome)
         computerScore = ++computerScore
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        currentScoreDisplay()
     } else if (outcome === "You Lose! Rock breaks Scissors") {
-        console.log(`${outcome}`)
+        outcomeDisplay(outcome)
         computerScore = ++computerScore
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        currentScoreDisplay()
     } else if (outcome === "You Win! Scissors cut Paper") {
-        console.log(`${outcome}`)
+        outcomeDisplay(outcome)
         playerScore = ++playerScore
-        console.log(`You : ${playerScore} || Computer : ${computerScore}`)
+        currentScoreDisplay()
     }
 }
 
-function numberOfRounds(number) {
-    for (let i = 0; i < number; i++) {
-        scoreDetermine();
-        
-    }
-}
+// function numberOfRounds(number) {
+//     for (let i = 0; i < number; i++) {
+//         scoreDetermine(); 
+//     }
+// }
 
 // // Create function that plays five rounds
 // function playGame() {
@@ -113,18 +116,49 @@ function numberOfRounds(number) {
 // Invoke the function that plays five rounds
 // playGame()
 
+const scoreDisplay = document.querySelector("div")
+
 // Store the three buttons in variables
 const rockButton = document.querySelector("#rock")
 const paperButton = document.querySelector("#paper")
 const scissorsButton = document.querySelector("#scissors")
 
-rockButton.addEventListener("click", () => console.log("You chose rock"))
+rockButton.addEventListener("click", () => playerChoiceRockDisplay())
 rockButton.addEventListener("click", () => scoreDetermine("rock"))
 
-paperButton.addEventListener("click", () => console.log("You chose paper"))
+paperButton.addEventListener("click", () => playerChoicePaperDisplay())
 paperButton.addEventListener("click", () => scoreDetermine("paper"))
 
-scissorsButton.addEventListener("click", () => console.log("You chose scissors"))
+scissorsButton.addEventListener("click", () => playerChoiceScissorsDisplay())
 scissorsButton.addEventListener("click", () => scoreDetermine("scissors"))
 
-const scoreDisplay = document.querySelector("div")
+function playerChoiceRockDisplay() {
+    const playerChoiceDisplay = document.createElement("div")
+    playerChoiceDisplay.textContent = "You chose rock"
+    scoreDisplay.appendChild(playerChoiceDisplay)
+}
+function playerChoicePaperDisplay() {
+    const playerChoiceDisplay = document.createElement("div")
+    playerChoiceDisplay.textContent = "You chose paper"
+    scoreDisplay.appendChild(playerChoiceDisplay)
+}
+function playerChoiceScissorsDisplay() {
+    const playerChoiceDisplay = document.createElement("div")
+    playerChoiceDisplay.textContent = "You chose scissors"
+    scoreDisplay.appendChild(playerChoiceDisplay)
+}
+
+function outcomeDisplay(outcome) {
+    const outcomeDisplay = document.createElement("div")
+    outcomeDisplay.textContent = `${outcome}`
+    scoreDisplay.appendChild(outcomeDisplay)
+}
+
+function currentScoreDisplay() {
+    const currentScoreDisplay = document.createElement("div")
+    currentScoreDisplay.textContent = `You : ${playerScore} || Computer : ${computerScore}`
+    scoreDisplay.appendChild(currentScoreDisplay)
+
+    const spacer = document.createElement("br")
+    scoreDisplay.appendChild(spacer)
+}
